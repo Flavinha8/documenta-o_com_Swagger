@@ -1,0 +1,479 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Swagger Library Manager - OpenAPI 3.0",
+        "description": "Esta é a documentação da API para gerenciamento de uma biblioteca",
+        "contact": {
+            "email": "flavinha@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3333"
+        }
+    ],
+    "tags": [
+        {
+            "name": "books",
+            "description": "Gerenciamento dos livros da biblioteca"
+          },
+          {
+            "name": "loans",
+            "description": "Realize empréstimos e devoluções dos livros"
+          },
+          {
+            "name": "users",
+            "description": "Operações a respeito do usuário"
+          }
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["users"],
+                "summary": "Cria um novo usuário",
+                "description": "Cria um novo usuário passando suas informações básicas",
+                "requestBody": {
+                    "content": {
+                        "apllication/json": {
+                            "schema": {
+                                "$ref": "#components/schemas/User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name": "Flaviane",
+                                        "email": "flavinha@gmail.com",
+                                        "telefone": "41 9999-8888",
+                                        "password": ""
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Usuário já cadastrado" 
+                    },
+                    "200": {
+                        "description": "Usuário criado com sucesso!",
+                        "content": {
+                            "apllication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["users"],
+                "summary": "Postar usuários",
+                "description": "Postar e listar os usuários",
+                "responses": {
+                    "400": {
+                        "description": "Usuário já cadastrado" 
+                    },
+                    "200": {
+                        "description": "Usuário criado com sucesso!",
+                        "content": {
+                            "apllication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                
+                "tags": ["users"],
+                "summary": "update dos usuários criado",
+                "description": "update dos usuários",
+                "responses": {
+                    "400": {
+                        "description": "update não realizado!" 
+                    },
+                    "200": {
+                        "description": "update realizado com sucesso!",
+                        "content": {
+                            "apllication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                
+                    "tags": ["users"],
+                    "summary": "deleção dos usuários criados",
+                    "description": "deleção dos usuários",
+                    "responses": {
+                        "400": {
+                            "description": "deleção não realizado!" 
+                        },
+                        "200": {
+                            "description": "deleção realizada com sucesso!",
+                            "content": {
+                                "apllication/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "items": {
+                                            "$ref": "#components/schemas/User"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+            },
+            "patch":{
+                    "tags": ["users"],
+                    "summary": "atualização dos usuários criados",
+                    "description": "atualização dos usuários",
+                    "responses": {
+                        "400": {
+                            "description": "atualização não realizado!" 
+                        },
+                        "200": {
+                            "description": "atualização realizada com sucesso!",
+                            "content": {
+                                "apllication/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "items": {
+                                            "$ref": "#components/schemas/User"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+            }
+            },
+        "/books":{    
+            "post": {
+                "tags": ["books"],
+                    "summary": "Cria um novo livro",
+                    "description": "Cria um novo livro passando suas informações básicas",
+                    "requestBody": {
+                        "content": {
+                            "apllication/json": {
+                                "schema": {
+                                    "$ref": "#components/schemas/User"
+                                },
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "titulo": "O pequeno principe",
+                                            "autor": "Saint",
+                                            "ano": "1943",
+                                            "paginas": "115",
+                                            "categoria": "Livro infantil"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "400": {
+                            "description": "Livro já cadastrado!" 
+                        },
+                        "200": {
+                            "description": "Livro criado com sucesso!",
+                            "content": {
+                                "apllication/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "items": {
+                                            "$ref": "#components/schemas/User"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+            },
+            "get":{
+                "tags": ["books"],
+                "summary": "Listar livros criados",
+                "description": "Listar os livros",
+                "responses": {
+                    "400": {
+                        "description": "Lista de livros não criada!" 
+                    },
+                    "200": {
+                        "description": "Lista de livros criada com sucesso!",
+                        "content": {
+                            "apllication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                
+                "tags": ["books"],
+                "summary": "update dos livros criado",
+                "description": "update dos livros",
+                "responses": {
+                    "400": {
+                        "description": "update não realizado!" 
+                    },
+                    "200": {
+                        "description": "update realizado com sucesso!",
+                        "content": {
+                            "apllication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            
+            },
+            "delete": {
+                
+                "tags": ["books"],
+                "summary": "deleção dos livros criados",
+                "description": "deleção dos livros",
+                "responses": {
+                    "400": {
+                        "description": "deleção não realizado!" 
+                    },
+                    "200": {
+                        "description": "deleção realizada com sucesso!",
+                        "content": {
+                            "apllication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            
+
+            
+        
+            },
+            "patch":{
+                "tags": ["books"],
+                "summary": "atualização dos livros criados",
+                "description": "atualização dos livros",
+                "responses": {
+                    "400": {
+                        "description": "atualização não realizado!" 
+                    },
+                    "200": {
+                        "description": "atualização realizada com sucesso!",
+                        "content": {
+                            "apllication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/loans": {
+        "post": {
+            "tags": ["loans"],
+                "summary": "Cria um novo empréstimo",
+                "description": "Cria um novo empréstimos passando suas informações",
+                "requestBody": {
+                    "content": {
+                        "apllication/json": {
+                            "schema": {
+                                "$ref": "#components/schemas/User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name": "Flaviane",
+                                        "email": "flavinha@gmail.com",
+                                        "telefone": "41 9999-8888",
+                                        "password": "123"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Livro já cadastrado!" 
+                    },
+                    "200": {
+                        "description": "Livro criado com sucesso!",
+                        "content": {
+                            "apllication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+        },
+        "get": {
+        "tags": ["loans"],
+        "summary": "Listar empréstimos criados",
+        "description": "Listar os empréstimos",
+        "responses": {
+            "400": {
+                "description": "Lista de empréstimos não criada!" 
+            },
+            "200": {
+                "description": "Lista de empréstimos criada com sucesso!",
+                "content": {
+                    "apllication/json": {
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#components/schemas/User"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        },
+        "put": {      
+            "tags": ["loans"],
+            "summary": "update dos empréstimos criado",
+            "description": "update dos empréstimos",
+            "responses": {
+                "400": {
+                    "description": "update não realizado!" 
+                },
+                "200": {
+                    "description": "update realizado com sucesso!",
+                    "content": {
+                        "apllication/json": {
+                            "schema": {
+                                "type": "object",
+                                "items": {
+                                    "$ref": "#components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "delete": {
+                
+            "tags": ["loans"],
+            "summary": "deleção dos empréstimos criados",
+            "description": "deleção dos empréstimos",
+            "responses": {
+                "400": {
+                    "description": "deleção não realizado!" 
+                },
+                "200": {
+                    "description": "deleção realizada com sucesso!",
+                    "content": {
+                        "apllication/json": {
+                            "schema": {
+                                "type": "object",
+                                "items": {
+                                    "$ref": "#components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "patch":{
+            "tags": ["loans"],
+            "summary": "atualização dos empréstimos criados",
+            "description": "atualização dos empréstimos",
+            "responses": {
+                "400": {
+                    "description": "atualização não realizado!" 
+                },
+                "200": {
+                    "description": "atualização realizada com sucesso!",
+                    "content": {
+                        "apllication/json": {
+                            "schema": {
+                                "type": "object",
+                                "items": {
+                                    "$ref": "#components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties":{
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "telefone": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            
+            }
+        }
+    }
+}
+}     
+        
+
+    
+
